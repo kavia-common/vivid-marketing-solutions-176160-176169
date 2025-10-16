@@ -1,47 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import "./index.css";
+import { sections, scrollToId, theme } from "./theme";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 // PUBLIC_INTERFACE
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [active, setActive] = useState(sections.home);
 
-  // Effect to apply theme to document element
+  // Observe section visibility to update active nav state
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+    const ids = Object.values(sections);
+    const observers = [];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              setActive(id);
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.1, 0.5, 1] }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  const handleNavClick = (id) => {
+    scrollToId(id);
   };
 
+  // Apply light theme background
+  useEffect(() => {
+    document.body.style.background = theme.colors.background;
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar active={active} onNavClick={handleNavClick} />
+      <main>
+        <Hero id={sections.home} onPrimaryCta={() => handleNavClick(sections.services)} onSecondaryCta={() => handleNavClick(sections.contact)} />
+        <Services id={sections.services} />
+        <Testimonials id={sections.testimonials} />
+        <Contact id={sections.contact} />
+      </main>
+      <Footer />
     </div>
   );
 }
