@@ -11,7 +11,7 @@ import { theme } from "../theme";
  */
 export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
   return (
-    <section id={id} className="section" style={{ paddingTop: 96, paddingBottom: 96 }}>
+    <section id={id} className="section" style={{ paddingTop: 84, paddingBottom: 84 }}>
       <div
         style={{
           background: theme.gradient.heroBg,
@@ -64,7 +64,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
         `}</style>
 
         <div
-          className="container"
+          className="container hero-grid"
           style={{
             paddingTop: 72,
             paddingBottom: 72,
@@ -73,6 +73,15 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
             gap: "2rem",
           }}
         >
+          {/* Responsive adjustments */}
+          <style>{`
+            @media (max-width: 900px) {
+              #${id} .hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+              }
+            }
+          `}</style>
           <div>
             <span className="badge">Marketing Consulting</span>
             <h1
@@ -107,23 +116,34 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
           </div>
 
           <div style={{ alignSelf: "center", justifySelf: "center", width: "100%" }}>
-            <div
+            {/* Main visual: brand logo */}
+            <figure
               style={{
-                aspectRatio: "4/3",
-                borderRadius: "16px",
-                background:
-                  "linear-gradient(135deg, rgba(59,130,246,.12), rgba(6,182,212,.12))",
-                border: "1px dashed rgba(17,24,39,.1)",
+                margin: 0,
                 display: "grid",
                 placeItems: "center",
-                color: "var(--secondary)",
+                padding: "1.25rem",
+                borderRadius: "16px",
+                background:
+                  "linear-gradient(135deg, rgba(59,130,246,.10), rgba(6,182,212,.10))",
+                border: "1px solid rgba(17,24,39,.06)",
                 boxShadow: "var(--shadow-md)",
               }}
-              aria-label="Decorative marketing illustration"
-              role="img"
             >
-              <span>Marketing Insights Visual</span>
-            </div>
+              <img
+                src="/assets/logo/brand-logo.jpg"
+                alt="CB Strategy Brand Logo"
+                style={{
+                  width: "100%",
+                  maxWidth: 520,
+                  height: "auto",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 10px 24px rgba(17,24,39,.15))",
+                  borderRadius: "12px",
+                }}
+              />
+              <figcaption className="visually-hidden">Primary brand mark visual</figcaption>
+            </figure>
           </div>
         </div>
       </div>
