@@ -74,7 +74,7 @@ function App() {
         <div
           aria-hidden="true"
           style={{
-            height: 8,
+            height: 4,
             background:
               "linear-gradient(180deg, rgba(249,250,251,0.0) 0%, rgba(249,250,251,1) 100%)",
           }}

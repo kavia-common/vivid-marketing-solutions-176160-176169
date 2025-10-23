@@ -14,8 +14,8 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
     <section
       id={id}
       className="section"
-      /* Remove extra top whitespace so it sits flush under navbar */
-      style={{ paddingTop: 0, paddingBottom: 48 }}
+      /* Remove extra top whitespace so it sits flush under navbar; tighten bottom to reduce gap to Services */
+      style={{ paddingTop: 0, paddingBottom: 40 }}
     >
       <div
         style={{

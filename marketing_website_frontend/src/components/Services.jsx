@@ -33,45 +33,57 @@ export default function Services({ id }) {
   return (
     <section
       id={id}
-      className="section container"
-      style={{ paddingTop: 40 }}
+      className="section"
+      /* Minimize the top gap so it sits just under the hero transition */
+      style={{ paddingTop: 20 }}
     >
-      <h2 className="section-title">Services</h2>
-      <p className="section-subtitle">
-        Full-funnel solutions tailored to your goals.
-      </p>
+      {/* Centered container with width constraint and centered text for headings */}
+      <div
+        className="container"
+        style={{ maxWidth: 1100, marginInline: "auto", textAlign: "center" }}
+      >
+        <h2 className="section-title" style={{ marginBottom: ".4rem" }}>Services</h2>
+        <p className="section-subtitle" style={{ marginBottom: "1.25rem" }}>
+          Full-funnel solutions tailored to your goals.
+        </p>
 
-      <div className="card-grid" role="list">
-        {services.map((s) => (
-          <article
-            key={s.title}
-            role="listitem"
-            className="card"
-            style={{ display: "grid", gap: ".5rem" }}
-          >
-            <div
-              aria-hidden="true"
-              style={{
-                width: 44,
-                height: 44,
-                display: "grid",
-                placeItems: "center",
-                borderRadius: 12,
-                background: "rgba(59,130,246,.10)",
-                border: "1px solid rgba(59,130,246,.20)",
-                color: "var(--primary)",
-                fontSize: "1.25rem",
-              }}
+        <div
+          className="card-grid"
+          role="list"
+          /* keep grid centered within constrained container */
+          style={{ alignItems: "stretch", justifyItems: "stretch" }}
+        >
+          {services.map((s) => (
+            <article
+              key={s.title}
+              role="listitem"
+              className="card"
+              style={{ display: "grid", gap: ".5rem", textAlign: "left" }}
             >
-              {s.icon}
-            </div>
-            <h3 style={{ margin: ".25rem 0" }}>{s.title}</h3>
-            <p style={{ color: "var(--muted-text)", margin: 0 }}>{s.desc}</p>
-            <div style={{ marginTop: ".5rem" }}>
-              <button className="btn btn-secondary">Learn more</button>
-            </div>
-          </article>
-        ))}
+              <div
+                aria-hidden="true"
+                style={{
+                  width: 44,
+                  height: 44,
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: 12,
+                  background: "rgba(59,130,246,.10)",
+                  border: "1px solid rgba(59,130,246,.20)",
+                  color: "var(--primary)",
+                  fontSize: "1.25rem",
+                }}
+              >
+                {s.icon}
+              </div>
+              <h3 style={{ margin: ".25rem 0" }}>{s.title}</h3>
+              <p style={{ color: "var(--muted-text)", margin: 0 }}>{s.desc}</p>
+              <div style={{ marginTop: ".5rem" }}>
+                <button className="btn btn-secondary">Learn more</button>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
