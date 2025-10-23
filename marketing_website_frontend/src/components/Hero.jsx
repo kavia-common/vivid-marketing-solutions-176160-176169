@@ -14,8 +14,8 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
     <section
       id={id}
       className="section"
-      /* Reduce top whitespace; navbar offset handled by scroll helper */
-      style={{ paddingTop: 40, paddingBottom: 72 }}
+      /* Remove extra top whitespace so it sits flush under navbar */
+      style={{ paddingTop: 0, paddingBottom: 72 }}
     >
       <div
         style={{

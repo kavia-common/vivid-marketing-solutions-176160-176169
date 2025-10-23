@@ -100,7 +100,8 @@ img {
 }
 
 .section {
-  padding: 72px 0;
+  /* keep generous vertical rhythm but avoid extra space below sticky navbar */
+  padding: 64px 0;
 }
 
 .section-title {
@@ -165,6 +166,15 @@ img {
 .intro-gradient {
   /* Z-index lower than header (header zIndex=50 inline) so it sits underneath */
   z-index: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Explicit class hook for sticky navbar to avoid layout shifts */
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 /* Responsive tweaks */

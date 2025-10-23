@@ -21,6 +21,7 @@ export default function Navbar({ active, onNavClick }) {
   return (
     <header
       role="banner"
+      className="navbar-sticky"
       style={{
         position: "sticky",
         top: 0,

@@ -57,7 +57,9 @@ function App() {
           style={{
             position: "relative",
             zIndex: 0,
-            /* gradient underneath sticky navbar as well */
+            /* gradient underneath sticky navbar with no top gap */
+            marginTop: 0,
+            paddingTop: 0,
             background: theme.gradient.heroBg,
           }}
         >
