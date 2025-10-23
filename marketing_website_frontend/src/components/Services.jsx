@@ -35,7 +35,7 @@ export default function Services({ id }) {
       id={id}
       className="section"
       /* Minimize the top gap so it sits just under the hero transition */
-      style={{ paddingTop: 20 }}
+      style={{ paddingTop: 12 }}
     >
       {/* Centered container with width constraint and centered text for headings */}
       <div

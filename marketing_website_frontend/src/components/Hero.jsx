@@ -15,7 +15,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
       id={id}
       className="section"
       /* Remove extra top whitespace so it sits flush under navbar; tighten bottom to reduce gap to Services */
-      style={{ paddingTop: 0, paddingBottom: 40 }}
+      style={{ paddingTop: 0, paddingBottom: 28 }}
     >
       <div
         style={{
@@ -118,7 +118,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
               success.
             </p>
 
-            <div style={{ display: "flex", gap: ".75rem", marginTop: "1rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: ".6rem", marginTop: ".75rem", flexWrap: "wrap" }}>
               <button className="btn btn-primary" onClick={onPrimaryCta}>
                 Explore Services
               </button>
