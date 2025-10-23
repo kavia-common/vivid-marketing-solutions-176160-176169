@@ -31,7 +31,11 @@ export default function Services({ id }) {
   ];
 
   return (
-    <section id={id} className="section container">
+    <section
+      id={id}
+      className="section container"
+      style={{ paddingTop: 40 }}
+    >
       <h2 className="section-title">Services</h2>
       <p className="section-subtitle">
         Full-funnel solutions tailored to your goals.

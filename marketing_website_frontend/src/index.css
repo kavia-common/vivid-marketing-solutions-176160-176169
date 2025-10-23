@@ -101,7 +101,7 @@ img {
 
 .section {
   /* keep generous vertical rhythm but avoid extra space below sticky navbar */
-  padding: 64px 0;
+  padding: 56px 0; /* was 64px */
 }
 
 .section-title {
