@@ -54,7 +54,7 @@ export default function Navbar({ active, onNavClick }) {
               }}
             />
             <strong style={{ letterSpacing: "-.02em" }}>
-              Vivid Marketing
+              Craft Batch Marketing
             </strong>
           </div>
 

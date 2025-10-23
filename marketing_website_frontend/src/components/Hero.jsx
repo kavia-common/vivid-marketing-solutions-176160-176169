@@ -118,11 +118,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
               </button>
             </div>
 
-            <div style={{ display: "flex", gap: "1.25rem", marginTop: "1.25rem", color: "var(--muted-text)", fontSize: ".95rem" }}>
-              <div>• Strategy</div>
-              <div>• Creative</div>
-              <div>• Performance</div>
-            </div>
+            {/* Removed bullet copy row per request to keep hero compact and clean */}
           </div>
 
           <div style={{ alignSelf: "center", justifySelf: "center", width: "100%" }}>
