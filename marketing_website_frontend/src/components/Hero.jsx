@@ -99,8 +99,17 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
                 fontSize: "clamp(2rem, 1.5rem + 3vw, 3.25rem)",
                 margin: ".5rem 0",
                 letterSpacing: "-.02em",
+                lineHeight: 1.1, // tighter default line-height for multi-line heading
               }}
             >
+              {/* Responsive line-height tweak for very small screens */}
+              <style>{`
+                @media (max-width: 480px) {
+                  #${id} h1 {
+                    line-height: 1.18; /* slightly looser on small screens for readability */
+                  }
+                }
+              `}</style>
               Ignite growth with modern strategy and bold creativity.
             </h1>
             <p style={{ color: "var(--muted-text)", fontSize: "1.05rem", maxWidth: 640 }}>
