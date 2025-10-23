@@ -11,10 +11,16 @@ import { theme } from "../theme";
  */
 export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
   return (
-    <section id={id} className="section" style={{ paddingTop: 84, paddingBottom: 84 }}>
+    <section
+      id={id}
+      className="section"
+      /* Reduce top whitespace; navbar offset handled by scroll helper */
+      style={{ paddingTop: 40, paddingBottom: 72 }}
+    >
       <div
         style={{
-          background: theme.gradient.heroBg,
+          /* remove internal background so outer wrapper controls gradient span */
+          background: "transparent",
           position: "relative",
           overflow: "hidden",
           borderRadius: "24px",
@@ -37,6 +43,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
               "radial-gradient(closest-side, rgba(59,130,246,.20), transparent)",
             filter: "blur(6px)",
             animation: "float 8s ease-in-out infinite",
+            zIndex: 0,
           }}
         />
         <div
@@ -53,6 +60,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
             filter: "blur(8px)",
             animation: "float 10s ease-in-out infinite",
             animationDelay: "1.2s",
+            zIndex: 0,
           }}
         />
 
@@ -66,11 +74,13 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
         <div
           className="container hero-grid"
           style={{
-            paddingTop: 72,
-            paddingBottom: 72,
+            paddingTop: 56, /* tighten internal spacing */
+            paddingBottom: 64,
             display: "grid",
             gridTemplateColumns: "1.2fr .8fr",
             gap: "2rem",
+            position: "relative",
+            zIndex: 1, /* ensure content sits above decor */
           }}
         >
           {/* Responsive adjustments */}
@@ -78,7 +88,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
             @media (max-width: 900px) {
               #${id} .hero-grid {
                 grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
+                gap: 1.25rem !important;
               }
             }
           `}</style>
@@ -87,7 +97,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
             <h1
               style={{
                 fontSize: "clamp(2rem, 1.5rem + 3vw, 3.25rem)",
-                margin: ".75rem 0",
+                margin: ".5rem 0",
                 letterSpacing: "-.02em",
               }}
             >
@@ -99,7 +109,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
               success.
             </p>
 
-            <div style={{ display: "flex", gap: ".75rem", marginTop: "1.25rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: ".75rem", marginTop: "1rem", flexWrap: "wrap" }}>
               <button className="btn btn-primary" onClick={onPrimaryCta}>
                 Explore Services
               </button>
@@ -108,7 +118,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
               </button>
             </div>
 
-            <div style={{ display: "flex", gap: "1.25rem", marginTop: "1.5rem", color: "var(--muted-text)", fontSize: ".95rem" }}>
+            <div style={{ display: "flex", gap: "1.25rem", marginTop: "1.25rem", color: "var(--muted-text)", fontSize: ".95rem" }}>
               <div>• Strategy</div>
               <div>• Creative</div>
               <div>• Performance</div>
@@ -122,7 +132,7 @@ export default function Hero({ id, onPrimaryCta, onSecondaryCta }) {
                 margin: 0,
                 display: "grid",
                 placeItems: "center",
-                padding: "1.25rem",
+                padding: "1.1rem",
                 borderRadius: "16px",
                 background:
                   "linear-gradient(135deg, rgba(59,130,246,.10), rgba(6,182,212,.10))",

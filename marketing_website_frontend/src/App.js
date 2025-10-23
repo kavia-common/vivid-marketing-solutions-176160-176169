@@ -50,7 +50,34 @@ function App() {
     <div>
       <Navbar active={active} onNavClick={handleNavClick} />
       <main>
-        <Hero id={sections.home} onPrimaryCta={() => handleNavClick(sections.services)} onSecondaryCta={() => handleNavClick(sections.contact)} />
+        {/* Gradient wrapper spans from top nav to just before Services */}
+        <section
+          aria-label="Intro gradient background wrapper"
+          className="intro-gradient"
+          style={{
+            position: "relative",
+            zIndex: 0,
+            /* gradient underneath sticky navbar as well */
+            background: theme.gradient.heroBg,
+          }}
+        >
+          <Hero
+            id={sections.home}
+            onPrimaryCta={() => handleNavClick(sections.services)}
+            onSecondaryCta={() => handleNavClick(sections.contact)}
+          />
+        </section>
+
+        {/* Clean transition back to surface/background before Services */}
+        <div
+          aria-hidden="true"
+          style={{
+            height: 16,
+            background:
+              "linear-gradient(180deg, rgba(249,250,251,0.0) 0%, rgba(249,250,251,1) 100%)",
+          }}
+        />
+
         <Services id={sections.services} />
         <Testimonials id={sections.testimonials} />
         <Contact id={sections.contact} />

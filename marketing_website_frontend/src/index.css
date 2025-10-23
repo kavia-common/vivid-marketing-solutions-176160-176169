@@ -161,6 +161,13 @@ img {
   border: 0!important;
 }
 
+/* New: Intro gradient wrapper ensures gradient begins at the very top under sticky nav */
+.intro-gradient {
+  /* Z-index lower than header (header zIndex=50 inline) so it sits underneath */
+  z-index: 0;
+}
+
+/* Responsive tweaks */
 @media (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
